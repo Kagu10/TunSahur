@@ -118,7 +118,7 @@ client.on('message', (message) => {
     const args = message.content.slice(config.prefix.length).trim().split(' ');
     const command = args[0];
     
-    // !news - ручная проверка (ИСПРАВЛЕНО)
+    // !news
     if(command === 'news') {
         message.reply('проверяю новости...').then(async (msg) => {
             await checkNews();
@@ -126,7 +126,7 @@ client.on('message', (message) => {
         });
     }
     
-    // !sources - список источников
+    // !sources
     if(command === 'sources') {
         let sourcesList = '📰 **Список источников:**\n';
         for(let i = 0; i < feeds.length; i++) {
@@ -135,19 +135,19 @@ client.on('message', (message) => {
         message.reply(sourcesList);
     }
     
-    // !stats - статистика
+    // !stats 
     if(command === 'stats') {
         const totalSent = sentNews.length;
         const sourcesCount = feeds.length;
         message.reply(`📊 **Статистика:**\n• Отправлено новостей: ${totalSent}\n• Источников: ${sourcesCount}\n• Проверка раз в 10 минут`);
     }
     
-    // !test - проверка работы бота
+    // !test 
     if(command === 'test') {
         message.reply('✅ бот работает! команды: !news, !sources, !stats, !help');
     }
     
-    // !help - список команд
+    // !help
     if(command === 'help') {
         const helpMessage = `📰 **Новостной агрегатор — команды**
 
